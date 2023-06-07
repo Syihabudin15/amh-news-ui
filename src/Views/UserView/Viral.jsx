@@ -1,28 +1,40 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import CardPost from "../../Components/Utils/CardPost";
-import { Pagination, Divider } from "antd";
+import { Pagination, Divider, Spin } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { getNewsByCategory } from '../../Reduxs/Slice/NewsByCategory';
 
 function Viral(){
+    const { isLoading, data } = useSelector(state => state.newsCategory);
+    const [page, setPage] = useState(1);
+    const dis = useDispatch();
+
+    useEffect(() => {
+        dis(getNewsByCategory({id: '647265568b3de175e94f7a67', page}));
+    }, [dis, page]);
     return(
         <Fragment>
-            <section title="Berita Terbaru" style={{marginBottom: 100}}>
-                <div className="title-post">
-                    <h2>Judul Berita Viral</h2>
-                    <div style={{borderBottom: '1px solid #eee', textAlign: "right", color: '#aaa', fontSize: '.7em'}}>
-                        <p>11 Agustus 2024</p>
+            <Spin spinning={isLoading}>
+                <section title="Berita Terbaru" style={{marginBottom: 100}}>
+                    <div className="title-post">
+                        <h2>{data.length > 0 ? data[0].title : 'Judul Berita'}</h2>
+                        <div style={{borderBottom: '1px solid #eee', textAlign: "right", color: '#aaa', fontSize: '.7em'}}>
+                            <p>{data.length > 0 ? data[0].postedAt : 'Tanggal'}</p>
+                        </div>
                     </div>
-                </div>
-                <div className="body-post">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste aliquam aperiam distinctio dolor consequuntur quaerat pariatur minus quam esse, suscipit et, quod accusantium libero repudiandae laboriosam veritatis fuga? Repellendus deserunt impedit, harum porro quasi, odio dolorem nobis, id eaque rem error aperiam a modi ipsum illo blanditiis doloribus. Molestiae dignissimos sint voluptas neque magnam esse nostrum suscipit voluptatum in aut, ea corrupti maxime quam sit error alias sequi ratione. Impedit quisquam veritatis repellat magni iste porro repudiandae id, earum optio maiores dolore, assumenda hic illum? Quisquam autem eligendi recusandae eveniet cumque, tempora laborum accusantium, expedita consequuntur corrupti maxime cum ratione!</p>
-                </div>
-            </section>
-            <Divider/>
-            <section title="List Berita Terbaru" style={{margin: '100px 0'}}>
-                <div className="list-terbaru-wrapper">
-                    <CardPost/>
-                </div>
-                <Pagination total={50} style={{textAlign: 'center', marginTop: 80}}/>
-            </section>
+                    <div className="body-post" dangerouslySetInnerHTML={{__html: data.length > 0? data[0].body : ''}}>
+                    </div>
+                </section>
+                <Divider/>
+                <section title="List Berita Terbaru" style={{margin: '100px 0'}}>
+                    <div className="list-terbaru-wrapper">
+                        {data && data.map((e,i) => (
+                            <CardPost key={i} data={e}/>
+                        ))}
+                    </div>
+                    <Pagination total={data.length} onChange={(e) => setPage(e)} defaultCurrent={page} style={{textAlign: 'center', marginTop: 80}}/>
+                </section>
+            </Spin>
         </Fragment>
     )
 };
