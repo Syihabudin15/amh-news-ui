@@ -54,7 +54,7 @@ body{
     font-weight: bold;
     margin-bottom: -11px;
 }
-.card-body{
+.card-body a{
     font-size: .9em;
     font-style: italic;
 }
