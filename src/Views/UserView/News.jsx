@@ -18,7 +18,7 @@ function News(){
                 <Link to={'/'}><p>Main</p></Link>
             </div>
             <Spin spinning={isLoading}>
-                <div>
+                <div style={{marginBottom: 100}}>
                     {data ? <div className="title-post">
                                 <h2 >{data.title}</h2>
                                 <div style={{borderBottom: '1px solid #eee', textAlign: "right", color: '#aaa', fontSize: '.7em'}}>

@@ -131,7 +131,7 @@ body{
 }
 .back-main p{
     z-index: 10;
-    position: absolute;
+    position: fixed;
     text-shadow: 2px 2px 2px #aaa;
     color: #1930ff;
     top: 30px;

@@ -4,7 +4,7 @@ import { base } from "../../Extentions/LoadEnvirontment";
 import axios from "axios";
 
 export const searchNews = createAsyncThunk('/news/search', async(title, page) => {
-    const result = await axios.get(`${base}/api/v1/news/title?title?${title}&page=${page}`);
+    const result = await axios.get(`${base}/api/v1/news/title?title=${title}&page=${page}`);
     return result.data;
 });
 
