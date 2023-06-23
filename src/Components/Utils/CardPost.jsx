@@ -13,7 +13,7 @@ function CardPost({data, key}){
                 <p className="card-title">{data.title}</p>
                 <div className="card-body">
                     <p>{data.subBody}</p>
-                    <Link style={{marginLeft: 10, fontWeight: "bold"}}>... Detail</Link>
+                    <Link to={`/berita/${data.slug}`} style={{marginLeft: 10, fontWeight: "bold"}}>... Detail</Link>
                 </div>
             </div>
         </Fragment>

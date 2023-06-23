@@ -8,6 +8,7 @@ import Viral from "../Views/UserView/Viral";
 import Category from "../Views/UserView/Category";
 import CategoryName from "../Views/UserView/CategoryName";
 import AllNews from "../Views/UserView/AllNews";
+import News from "../Views/UserView/News";
 
 
 function UserRouters(){
@@ -20,6 +21,7 @@ function UserRouters(){
                 <Route path="/daftar-kategori" element={<Category/>} />
                 <Route path="/kategori/:nama" element={<CategoryName/>} />
                 <Route path="/daftar-berita" element={<AllNews/>} />
+                <Route path="/berita/:slug" element={<News/>} />
 
                 <Route path="*" element={<div style={{
                     display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', opacity: .5, fontWeight: "bold"
