@@ -33,7 +33,7 @@ function Routers(){
                 {label: 'Viral', key: '/viral'},
                 {label: 'Kategori', key: '#',
                     children: [
-                        {label: 'Game', key: '/kategori/game'},
+                        {label: 'Game', key: '/kategori/649551b40408fe550e330d9f'},
                         {label: 'Film', key: '/kategori/film'},
                         {label: 'Animasi', key: '/kategori/animasi'},
                         {label: 'Daftar Kategori', key: '/daftar-kategori'}

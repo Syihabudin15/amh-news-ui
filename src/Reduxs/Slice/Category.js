@@ -3,8 +3,8 @@ import axios from "axios";
 import { base } from "../../Extentions/LoadEnvirontment";
 import { notification } from "antd";
 
-export const getAllCategory = createAsyncThunk('/get/category/all', async(page) => {
-    let result = await axios.get(`${base}/api/get/category?page=${page}`);
+export const getAllCategory = createAsyncThunk('/get/category/all', async() => {
+    let result = await axios.get(`${base}/api/v1/category`);
     return result.data;
 });
 

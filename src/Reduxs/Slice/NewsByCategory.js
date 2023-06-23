@@ -4,7 +4,7 @@ import axios from "axios";
 import { notification } from "antd";
 
 export const getNewsByCategory = createAsyncThunk('/news/category', async({id, page}) => {
-    let result = await axios.get(`${base}/api/get/news/category?page=${page}&categoryId=${id}`);
+    let result = await axios.get(`${base}/api/v1/news/category?cateId=${id}&page=${page}`);
     return result.data;
 });
 

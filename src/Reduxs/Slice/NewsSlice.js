@@ -4,7 +4,7 @@ import { base } from '../../Extentions/LoadEnvirontment';
 import { notification } from "antd";
 
 export const getAllNews = createAsyncThunk('/news/all', async({page}) => {
-    let result = await axios.get(`${base}/api/get/news?page=${page}`);
+    let result = await axios.get(`${base}/api/v1/news?page=${page}`);
     return result.data;
 });
 
