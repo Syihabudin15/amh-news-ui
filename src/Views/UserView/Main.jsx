@@ -8,7 +8,6 @@ import { getAllNews } from '../../Reduxs/Slice/NewsSlice';
 function Main(){
     const { isLoading, data } = useSelector(state => state.news);
     const dis = useDispatch();
-    console.log(data);
 
     useEffect(() => {
         dis(getAllNews({page: 1}));

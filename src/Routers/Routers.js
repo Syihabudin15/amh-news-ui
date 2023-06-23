@@ -30,7 +30,7 @@ function Routers(){
         }else{
             setItems([
                 {label: 'Terbaru', key: '/terbaru'},
-                {label: 'Viral', key: '/viral'},
+                {label: 'Semua', key: '/daftar-berita'},
                 {label: 'Kategori', key: '#',
                     children: [
                         {label: 'Game', key: '/kategori/649551b40408fe550e330d9f'},

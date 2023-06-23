@@ -124,6 +124,11 @@ body{
 .category-id-wrap{
     margin: 50px auto;
 }
+.search-news{
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+}
 @media only screen and (max-width: 600px){
     .menu-pc{
         display: none;

@@ -8,7 +8,6 @@ import { base } from "../../Extentions/LoadEnvirontment";
 function Category(){
     const {isLoading, data} = useSelector(state => state.category);
     const dis = useDispatch();
-    console.log(data);
     useEffect(() => {
         dis(getAllCategory());
     }, [dis]);
