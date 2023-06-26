@@ -1,1 +1,1 @@
-export const base = process.env.BASE_URL || 'https://amh-news.cyclic.app';
+export const base = process.env.REACT_APP_BASE_URL || 'https://amh-news.cyclic.app';
