@@ -30,9 +30,9 @@ function Main(){
                         <Row>
                             <Col span={4} style={{fontWeight: 'bold'}}>Categories </Col>
                             <Col offset={3} className="category-post-list">
-                                {data[0].categories.map((e,i) => (
+                                {data.length > 0 ? data[0].categories.map((e,i) => (
                                     <Link to={`/kategori/${e._id}`} key={i}>{e.title}</Link>
-                                ))}
+                                )) : ''}
                             </Col>
                         </Row>
                     </div>
