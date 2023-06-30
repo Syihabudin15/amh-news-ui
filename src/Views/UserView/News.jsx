@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getNewsBySlug } from '../../Reduxs/Slice/NewsBySlug';
-import { Spin } from "antd";
+import { Spin, Row, Col } from "antd";
 
 function News(){
     const params = useParams();
@@ -12,6 +12,7 @@ function News(){
     useEffect(() => {
         dis(getNewsBySlug(params.slug));
     }, [dis, params.slug]);
+    console.log(data);
     return(
         <Fragment>
             <div className="back-main">
@@ -28,6 +29,16 @@ function News(){
                                 </div>
                             </div> : <p style={{fontWeight: 'bold', opacity: .5, color: 'red'}}>Not Found</p>}
                 </div>
+                <div className="category-post">
+                        <Row>
+                            <Col span={4} style={{fontWeight: 'bold'}}>Categories </Col>
+                            <Col offset={3} className="category-post-list">
+                                {data.categories.map((e,i) => (
+                                    <Link to={`/kategori/${e._id}`} key={i}>{e.title}</Link>
+                                ))}
+                            </Col>
+                        </Row>
+                    </div>
             </Spin>
         </Fragment>
     )

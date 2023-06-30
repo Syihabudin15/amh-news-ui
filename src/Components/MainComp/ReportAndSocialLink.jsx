@@ -23,7 +23,7 @@ function ReportAndSocialLink(){
                     </Form.Item>
 
                     <Form.Item style={{display: 'flex', justifyContent: "center"}}>
-                        <Button htmlType="submit" type="primary" style={{width: 200, fontWeight: 'bold'}}>SUBMIT</Button>
+                        <Button htmlType="submit" type="primary" style={{width: 200, fontWeight: 'bold'}} disabled>SUBMIT</Button>
                     </Form.Item>
                 </Form>
             </Col>
@@ -31,9 +31,9 @@ function ReportAndSocialLink(){
                 <div>
                     <h5>KATEGORI</h5>
                     <Space direction="vertical">
-                        <Link style={{color: 'black'}}>Animasi</Link>
-                        <Link style={{color: 'black'}}>Game</Link>
-                        <Link style={{color: 'black'}}>Film</Link>
+                        <Link style={{color: 'black'}} to={'/kategori/649e3d356b47138153e1d688'}>Animasi</Link>
+                        <Link style={{color: 'black'}} to={'/kategori/649551b40408fe550e330d9f'}>Game</Link>
+                        <Link style={{color: 'black'}} to={'/kategori/649e3d246b47138153e1d686'}>Sport</Link>
                     </Space>
                     <Divider/>
                 </div>
@@ -41,7 +41,7 @@ function ReportAndSocialLink(){
                     <h5>SOSIAL</h5>
                     <Space direction="vertical">
                         <Link style={{color: 'black'}}>Facebook</Link>
-                        <Link style={{color: 'black'}}>Github</Link>
+                        <Link style={{color: 'black'}} to={'https://github.com/Syihabudin15'}>Github</Link>
                         <Link style={{color: 'black'}}>Instagram</Link>
                         <Link style={{color: 'black'}}>Twitter</Link>
                     </Space>
@@ -61,12 +61,12 @@ function ReportAndSocialLink(){
                     <Space direction="vertical">
                         <span>DANA / OVO
                             <Typography.Paragraph copyable>
-                                0881022157439
+                                082115670361
                             </Typography.Paragraph>
                         </span>
                         <span>BCA
                             <Typography.Paragraph copyable>
-                                0881022157439
+                                082115670361
                             </Typography.Paragraph>
                         </span>
                     </Space>

@@ -77,6 +77,8 @@ body{
     width: 220px;
     height: 180px;
     position: relative;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #aaa;
 }
 .title-category{
     position: absolute;
@@ -140,6 +142,27 @@ body{
     padding: 0 10px;
     cursor: pointer;
 }
+.category-post{
+    margin-top: 50px;
+    opacity: .7;
+    border: 1px solid black;
+    padding: 10px;
+    width: 90vw;
+    margin: 50px auto;
+}
+.category-post-list{
+    font-style: italic;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.category-post-list a{
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+
 @media only screen and (max-width: 600px){
     .menu-pc{
         display: none;

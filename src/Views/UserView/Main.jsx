@@ -1,9 +1,10 @@
 import { Fragment, useEffect } from "react";
 import ReportAndSocialLink from "../../Components/MainComp/ReportAndSocialLink";
-import { Divider, Spin } from "antd";
+import { Col, Divider, Spin, Row } from "antd";
 import CardPost from "../../Components/Utils/CardPost";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllNews } from '../../Reduxs/Slice/NewsSlice';
+import { Link } from "react-router-dom";
 
 function Main(){
     const { isLoading, data } = useSelector(state => state.news);
@@ -12,6 +13,7 @@ function Main(){
     useEffect(() => {
         dis(getAllNews({page: 1}));
     }, [dis]);
+    console.log(data);
     return(
         <Fragment>
             <Spin spinning={isLoading}>
@@ -23,6 +25,16 @@ function Main(){
                         </div>
                     </div>
                     <div className="body-post" dangerouslySetInnerHTML={{__html: data.length > 0 ? data[0].body : ''}}>
+                    </div>
+                    <div className="category-post">
+                        <Row>
+                            <Col span={4} style={{fontWeight: 'bold'}}>Categories </Col>
+                            <Col offset={3} className="category-post-list">
+                                {data[0].categories.map((e,i) => (
+                                    <Link to={`/kategori/${e._id}`} key={i}>{e.title}</Link>
+                                ))}
+                            </Col>
+                        </Row>
                     </div>
                 </section>
                 <section title="List Berita" style={{margin: 20}}>

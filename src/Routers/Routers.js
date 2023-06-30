@@ -34,8 +34,8 @@ function Routers(){
                 {label: 'Kategori', key: '#',
                     children: [
                         {label: 'Game', key: '/kategori/649551b40408fe550e330d9f'},
-                        {label: 'Film', key: '/kategori/film'},
-                        {label: 'Animasi', key: '/kategori/animasi'},
+                        {label: 'Viral', key: '/kategori/649e3c386b47138153e1d684'},
+                        {label: 'Animasi', key: '/kategori/649e3d356b47138153e1d688'},
                         {label: 'Daftar Kategori', key: '/daftar-kategori'}
                     ]
                 }

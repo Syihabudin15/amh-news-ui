@@ -19,7 +19,7 @@ function Category(){
                     <div className="card-category-wrap">
                         {data && data.map((e,i) => (
                             <div className="card-category">
-                                <Image src={`${base}/img/${e.image}`} alt="game" width={'100%'} height={'100%'} />
+                                <Image src={`${base}/img/${e.image}`} alt="game" width={'100%'} height={'100%'} style={{borderRadius: 5}} />
                                 <Link to={`/kategori/${e._id}`}>
                                     <div className="title-category">
                                         <p>{e.title.toUpperCase()}</p>
