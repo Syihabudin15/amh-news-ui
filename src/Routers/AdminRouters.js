@@ -1,19 +1,10 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Register from "../Views/AdminView/Register";
 import Login from "../Views/AdminView/Login";
 import Dashboard from "../Views/AdminView/Dashboard";
 import CreateNews from "../Views/AdminView/CreateNews";
-import { useEffect } from "react";
-import Cookies from "js-cookie";
 
 function AdminRouter(){
-    const nav = useNavigate();
-    useEffect(() => {
-        const token = Cookies.get('token');
-        if(!token){
-            nav('/');
-        }
-    }, [nav]);
     return(
         <Routes>
             <Route path="register" element={<Register/>} />
