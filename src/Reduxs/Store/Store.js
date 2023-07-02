@@ -4,6 +4,7 @@ import NewsByCategory from "../Slice/NewsByCategory";
 import Category from "../Slice/Category";
 import SearchNewsSlice from "../Slice/SearchNews";
 import NewsBySlugSlice from "../Slice/NewsBySlug";
+import UserSlice from "../Slice/UserSlice";
 
 export default configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
         searchNews: SearchNewsSlice,
         newsSlug: NewsBySlugSlice,
         newsCategory: NewsByCategory,
-        category: Category
+        category: Category,
+        user: UserSlice
     }
 });

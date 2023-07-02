@@ -4,28 +4,43 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { MenuOutlined } from '@ant-design/icons';
 import AdminRouter from "./AdminRouters";
 import UserRouters from "./UserRouters";
+import { useDispatch, useSelector } from "react-redux";
+import { removeUser, setUser } from "../Reduxs/Slice/UserSlice";
+import { LogoutOutlined, TeamOutlined } from '@ant-design/icons';
+import CreateCategory from "../Views/AdminView/CreateCategory";
+import MenuAdmin from "../Views/AdminView/Utils/MenuAdmin";
 
 
 function Routers(){
+    const { fName, role } = useSelector(state => state.user);
     const [curr, setCurr] = useState();
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([]);
-    const [user, setUser] = useState();
     const nav = useNavigate();
+    const dis = useDispatch();
 
     const handleClick = (e) => {
         if(e.key === '/logout'){
-            setUser(null);
+            dis(removeUser());
             setCurr('/');
+            nav('/');
+            return;
         }
         setCurr(e.key);
         nav(e.key);
     };
     useEffect(() => {
-        if(user){
+        dis(setUser());
+        if(fName){
             setItems([
-                {label: user, key: '/admin/dashboard'},
-                {label: 'Logout', key: '/logout'}
+                {label: fName, key: '/admin/dashboard'},
+                {label: 'Berita', children: [
+                    {label: 'Buat Berita', key: '/admin/news/create', icon: ''},
+                    {label: 'Reviews', key: '/admin/news/reviews', icon: ''},
+                    role === 'Admin' ? {label: <CreateCategory />, key: '#buat-kategori', icon: ''} : null,
+                ]},
+                {label: 'Team', key: '/admin/team-saya', icon: <TeamOutlined />},
+                {label: '', key: '/logout', icon: <LogoutOutlined style={{color: 'red'}} title="keluar"/>}
             ])
         }else{
             setItems([
@@ -35,13 +50,14 @@ function Routers(){
                     children: [
                         {label: 'Game', key: '/kategori/649551b40408fe550e330d9f'},
                         {label: 'Viral', key: '/kategori/649e3c386b47138153e1d684'},
-                        {label: 'Animasi', key: '/kategori/649e3d356b47138153e1d688'},
+                        {label: 'Animasi', key: '/kategori/64a063ae62ca095cb6934a22'},
                         {label: 'Daftar Kategori', key: '/daftar-kategori'}
                     ]
                 }
             ]);
         }
-    }, [user]);
+    }, [fName, dis, role]);
+
     return(
         <Fragment>
             <Row>
@@ -49,7 +65,7 @@ function Routers(){
                     <Menu items={[{label: 'AMH NEWS', key: '/'}]} selectedKeys={curr} onClick={(e) => handleClick(e)} 
                     style={{fontWeight: 'bold', textShadow: '2px 2px 3px #aaa'}}/>
                 </Col>
-                <Col offset={9} className="menu-pc" span={5}>
+                <Col offset={fName ? 7 : 9} className="menu-pc" span={fName ? 7 : 5}>
                     <Menu items={items} selectedKeys={curr} mode="horizontal" onClick={(e) => handleClick(e)} />
                 </Col>
                 <Col className="menu-mobile" offset={10} >
@@ -60,6 +76,7 @@ function Routers(){
                 <Drawer open={open} onClose={() => setOpen(false)} width={'80%'}>
                     <Menu items={items} selectedKeys={curr} mode="inline" onClick={(e) => handleClick(e)} />
                 </Drawer>
+                <MenuAdmin/>
             </Row>
 
                 <Routes>

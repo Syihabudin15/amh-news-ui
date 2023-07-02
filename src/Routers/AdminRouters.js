@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "../Views/AdminView/Register";
 import Login from "../Views/AdminView/Login";
 import Dashboard from "../Views/AdminView/Dashboard";
+import CreateNews from "../Views/AdminView/CreateNews";
 
 function AdminRouter(){
     return(
@@ -10,7 +11,7 @@ function AdminRouter(){
             <Route path="login" element={<Login/>} />
             <Route path="dashboard" element={<Dashboard/>} />
             <Route path="list-news" element={<div>List News</div>} />
-            <Route path="create" element={<div>Create News</div>} />
+            <Route path="news/create" element={<CreateNews />} />
             <Route path="read" element={<div>Read News</div>} />
             <Route path="update" element={<div>Update News</div>} />
 

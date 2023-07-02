@@ -161,6 +161,78 @@ body{
     border-radius: 5px;
     padding: 2px 5px;
 }
+.feedback{
+    color: red;
+    font-style: italic;
+    font-size: .8em;
+}
+.create-cate-img{
+    width: 100px;
+    border: 1px solid #aaa;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+.create-cate-img img{
+    border-radius: 10px;
+    width: 100%;
+}
+.menu-admin{
+    width: 30vw;
+    position: fixed;
+    bottom: 50px;
+    z-index: 999;
+    left: 35vw;
+    border: 2px solid #4c5df5;
+    padding: 10px 0;
+    border-radius: 20px;
+    background-color: #4c5df5;
+    opacity: .8;
+}
+.menu-admin a{
+    border: 1px solid #bbb;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+}
+.head-dashboard{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    overflow-x: hidden;
+    background-color: #e3e1e1;
+    padding: 10px;
+}
+.bio-wrap{
+    padding: 10px;
+    border: 1px solid #ababab;
+    box-shadow: 2px 2px 2px #aaa;
+    width: 40vw;
+    border-radius: 10px;
+}
+.bio-left{
+    font-weight: bold;
+}
+.form-news{
+    width: 90vw;
+    margin: 30px auto;
+}
+.button-news{
+    display: flex;
+    justify-content: center;
+}
+.prevew{
+    width: 90vw;
+    margin: 50px auto;
+    border: 1px solid #aaa;
+    margin-bottom: 100px;
+}
+.img-quil{
+    border: 1px solid #aaa;
+    padding: 5px;
+    border-radius: 5px;
+}
 
 
 @media only screen and (max-width: 600px){
@@ -193,5 +265,12 @@ body{
     .auth-with{
         border-left: none;
         border-top: 1px solid #eee;
+    }
+    .menu-admin{
+        width: 70vw;
+        left: 15vw;
+    }
+    .bio-wrap{
+        width: 80vw;
     }
 }

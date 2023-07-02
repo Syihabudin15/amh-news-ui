@@ -1,9 +1,17 @@
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import { Link, useNavigate } from "react-router-dom";
 
-const { Fragment } = require("react");
+const { Fragment, useEffect } = require("react");
 
 function Register(){
+    const nav = useNavigate();
+    useEffect(() => {
+        const user = Cookies.get('token');
+        if(user){
+            nav('/admin/dashboard');
+        }
+    }, []);
     return(
         <Fragment>
             <section title="Daftar" className="auth-wrapper">

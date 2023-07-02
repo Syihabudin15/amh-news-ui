@@ -31,7 +31,7 @@ function ReportAndSocialLink(){
                 <div>
                     <h5>KATEGORI</h5>
                     <Space direction="vertical">
-                        <Link style={{color: 'black'}} to={'/kategori/649e3d356b47138153e1d688'}>Animasi</Link>
+                        <Link style={{color: 'black'}} to={'/kategori/64a063ae62ca095cb6934a22'}>Animasi</Link>
                         <Link style={{color: 'black'}} to={'/kategori/649551b40408fe550e330d9f'}>Game</Link>
                         <Link style={{color: 'black'}} to={'/kategori/649e3d246b47138153e1d686'}>Sport</Link>
                     </Space>
@@ -50,9 +50,9 @@ function ReportAndSocialLink(){
                 <div>
                     <h5>MENU</h5>
                     <Space direction="vertical">
-                        <Link style={{color: 'black'}}>Viral</Link>
-                        <Link style={{color: 'black'}}>Terbaru</Link>
-                        <Link style={{color: 'black'}}>Video</Link>
+                        <Link style={{color: 'black'}} to={'/kategori/649e3c386b47138153e1d684'}>Viral</Link>
+                        <Link style={{color: 'black'}} to={'/terbaru'}>Terbaru</Link>
+                        <Link style={{color: 'black'}} to={'/daftar-berita'}>Semua</Link>
                     </Space>
                     <Divider/>
                 </div>
