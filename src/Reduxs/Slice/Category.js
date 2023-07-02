@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { base } from "../../Extentions/LoadEnvirontment";
-import { notification } from "antd";
 
 export const getAllCategory = createAsyncThunk('/get/category/all', async() => {
     let result = await axios.get(`${base}/api/v1/category`);
@@ -18,7 +17,6 @@ const CategorySlice = createSlice({
         [getAllCategory.pending]: (state) => {state.isLoading = true},
         [getAllCategory.rejected]: (state) => {
             state.isLoading = false;
-            notification.error({message: 'Server Error'});
         },
         [getAllCategory.fulfilled]: (state, action) => {
             state.isLoading = false;

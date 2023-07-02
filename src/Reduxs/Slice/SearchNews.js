@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { notification } from "antd";
 import { base } from "../../Extentions/LoadEnvirontment";
 import axios from "axios";
 
@@ -17,7 +16,6 @@ const SearchNewsSlice = createSlice({
     extraReducers: {
         [searchNews.rejected]: (state) => {
             state.loading = false;
-            notification.error({message: 'Connection Timed Out'});
         },
         [searchNews.pending]: (state) => {
             state.loading = true;

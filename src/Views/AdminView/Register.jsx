@@ -11,7 +11,7 @@ function Register(){
         if(user){
             nav('/admin/dashboard');
         }
-    }, []);
+    }, [nav]);
     return(
         <Fragment>
             <section title="Daftar" className="auth-wrapper">

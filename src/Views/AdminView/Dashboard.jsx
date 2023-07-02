@@ -16,7 +16,10 @@ function Dashboard(){
                         <Col className="bio-left">Email</Col><Col offset={2} span={2}>:</Col><Col>{email}</Col>
                     </Row>
                     <Row>
-                        <Col className="bio-left">Role</Col><Col offset={2} span={2}>:</Col><Col style={{fontWeight: 'bold', color: 'green'}}>{role.toUpperCase()}</Col>
+                        <Col className="bio-left">Role</Col><Col offset={2} span={2}>:</Col>
+                        <Col style={{fontWeight: 'bold', color: 'green', fontSize: '.8em'}}>
+                            {role ? role.toUpperCase() : ''}
+                        </Col>
                     </Row>
                 </div>
                 <div className="bio-wrap">
