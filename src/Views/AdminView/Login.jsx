@@ -15,7 +15,7 @@ function Login(){
 
     const handleFinish = (e) => {
         setLoading(true);
-        if(e.email === null || e.password === null || e.password.length <= 5 || !e.email.includes('@gmail')){
+        if(!e.email || !e.password || !e.email.includes('@gmail')){
             setFeed('wrong email or password!');
             setLoading(false);
             return;
@@ -29,8 +29,8 @@ function Login(){
         })
         .catch((err) => {
             setFeed(err.response.data.message);
+            setLoading(false);
         });
-        setLoading(false);
     };
     useEffect(() => {
         const user = Cookies.get('token');
