@@ -13,24 +13,24 @@ function Login(){
     const nav = useNavigate();
     const dis = useDispatch();
 
-    const handleFinish = (e) => {
+    const handleFinish = async (e) => {
         setLoading(true);
-        if(e.email === null || e.password === null || e.password.length <= 5 || !e.email.includes('@gmail')){
+        if(e.email === null || e.password === null || !e.email.includes('@gmail')){
             setFeed('wrong email or password!');
             setLoading(false);
             return;
         }
-        axios.post(`${base}/api/v1//login`, {email: e.email, password: e.password})
-        .then((res) => {
-            notification.success({message: 'Berhasil masuk'});
-            Cookies.set('token', res.data.data.token, {expires: 2});
+        try{
+            const result = await axios.post(`${base}/api/v1/login`, {email: e.email, password: e.password});
+            Cookies.set('token', result.data.data.token, {expires: 2});
             dis(setUser());
+            notification.success({message: 'Berhasil masuk'});
             nav('/admin/dashboard');
-        })
-        .catch((err) => {
-            setFeed(err.response.data.message);
-        });
-        setLoading(false);
+        }catch(err){
+            console.log(err);
+            setFeed(err.response.data.message || 'server error');
+            setLoading(false);
+        }
     };
     useEffect(() => {
         const user = Cookies.get('token');

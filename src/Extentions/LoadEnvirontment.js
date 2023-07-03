@@ -1,1 +1,1 @@
-export const base = process.env.REACT_APP_BASE_URL || 'http://localhost:5000';
+export const base = process.env.REACT_APP_BASE_URL || 'https://amh-news-api.vercel.app';

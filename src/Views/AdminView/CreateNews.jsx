@@ -155,7 +155,7 @@ function CreateNews(){
             <section title="prevew" className="prevew">
                 <h2 style={{textAlign: 'center', marginBottom: 30}} >{title? title : 'Judul Berita'}</h2>
                 <div className="body-wrapper-prevew">
-                    <div dangerouslySetInnerHTML={{__html: editHtml}}></div>
+                    <div className='body-post' dangerouslySetInnerHTML={{__html: editHtml}}></div>
                 </div>
             </section>
         </Fragment>
