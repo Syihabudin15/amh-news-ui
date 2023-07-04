@@ -28,7 +28,7 @@ body{
     width: 30vw;
     border-radius: 10px;
 }
-.title-post{
+.title-post h2{
     text-align: center;
     margin: 50px;
 }
@@ -203,6 +203,8 @@ body{
     overflow-x: hidden;
     background-color: #e3e1e1;
     padding: 10px;
+    gap: 20px;
+    align-items: center;
 }
 .bio-wrap{
     padding: 10px;
@@ -233,8 +235,33 @@ body{
     padding: 2px;
     border-radius: 5px;
     margin: 10px auto;
+    width: 40vw;
+    height: 20vw;
+    margin-left: 30px;
 }
-
+.table-wrap{
+    width: 90vw;
+    margin: 50px auto;
+    overflow-x: scroll;
+}
+.action-wrap{
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    z-index: 10000;
+}
+.action{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.table-user{
+    overflow-x: scroll;
+}
 
 @media only screen and (max-width: 600px){
     .menu-pc{
@@ -273,5 +300,9 @@ body{
     }
     .bio-wrap{
         width: 80vw;
+    }
+    .body-post img{
+        width: 80vw;
+        height: 30vw;
     }
 }

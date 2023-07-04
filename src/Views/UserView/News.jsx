@@ -4,18 +4,27 @@ import { Link, useParams } from "react-router-dom";
 import { getNewsBySlug } from '../../Reduxs/Slice/NewsBySlug';
 import { Spin, Row, Col } from "antd";
 
-function News(){
+function News({slug, idSet, isPostSet}){
     const params = useParams();
     const {isLoading, data} = useSelector(state => state.newsSlug);
     const dis = useDispatch();
 
     useEffect(() => {
-        dis(getNewsBySlug(params.slug));
-    }, [dis, params.slug]);
-    console.log(data);
+        if(slug){
+            dis(getNewsBySlug(slug));
+            idSet(data._id)
+        }else{
+            dis(getNewsBySlug(params.slug));
+        }
+        if(data.postedAt){
+            isPostSet(true);
+        }else{
+            isPostSet(false);
+        }
+    }, [dis, params.slug, slug, data._id, idSet, data.postedAt, isPostSet]);
     return(
         <Fragment>
-            <div className="back-main">
+            <div className="back-main" style={{display: slug? 'none': 'block'}}>
                 <Link to={'/'}><p>Main</p></Link>
             </div>
             <Spin spinning={isLoading}>
@@ -33,7 +42,7 @@ function News(){
                         <Row>
                             <Col span={4} style={{fontWeight: 'bold'}}>Categories </Col>
                             <Col offset={3} className="category-post-list">
-                                {data.categories.map((e,i) => (
+                                {data.categories && data.categories.map((e,i) => (
                                     <Link to={`/kategori/${e._id}`} key={i}>{e.title}</Link>
                                 ))}
                             </Col>

@@ -54,7 +54,7 @@ function CreateNews(){
             notification.success({message: 'Berita berhasil dibuat'});
             nav('/admin/dashboard');
         }).catch(err => {
-            setFeed(err.response.data.message);
+            setFeed(err.response.data.message || 'server error');
         })
     };
 
@@ -83,7 +83,7 @@ function CreateNews(){
                 editor.insertEmbed(editor.getSelection(), 'image', `${base}/img/${res.data.data.url}`);
             })
             .catch(err => {
-                notification.error({message: err.response.data.message});
+                notification.error({message: err.response.data.message || 'server error'});
             });
         };
         

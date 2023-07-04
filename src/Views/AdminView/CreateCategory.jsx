@@ -16,27 +16,29 @@ function CreateCategory(){
         setFeed(null);
     };
 
-    const handleOk = () => {
+    const handleOk = async () => {
         if(!title || !img) return setFeed('Title and Image is required');
         setLoading(true);
         const data = new FormData();
         data.append('title', title);
         data.append('image', img);
-        axios.request({
-            method: 'POST',
-            url: `${base}/api/v1/category`,
-            headers: {
-                'token': Cookies.get('token')
-            },
-            data: data
-        }).then(res => {
+        try{
+            await axios.request({
+                method: 'POST',
+                url: `${base}/api/v1/category`,
+                headers: {
+                    'token': Cookies.get('token')
+                },
+                data: data
+            });
             notification.success({message: 'Berhasil!'});
             setOpen(false);
-        })
-        .catch(err => {
-            setFeed(err.response.data.message);
-        });
-        setLoading(false);
+        }catch(err){
+            setFeed(err.response.data.message || 'server error');
+            console.log(err);
+        }finally{
+            setLoading(false);
+        }
     };
     return(
         <Fragment>
@@ -60,9 +62,11 @@ function CreateCategory(){
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="create-cate-img">
-                        {img && <Image src={URL.createObjectURL(img)} /> }
-                    </Col>
+                    {img && 
+                        <Col className="create-cate-img">
+                            <Image src={URL.createObjectURL(img)} />
+                        </Col>
+                    }
                 </Row>
                 <Row>
                     <Col className="feedback">{feed}</Col>

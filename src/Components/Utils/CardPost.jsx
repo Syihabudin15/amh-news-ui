@@ -8,11 +8,11 @@ function CardPost({data, key}){
         <Fragment>
             <div className="card-post" key={key}>
                 <div className="card-img">
-                    <Image src={`${base}/img/${data.images[0].image}`} alt="card-img" width={'100%'} height={'100%'} />
+                    <Image src={`${base}/img/${data.image}`} alt="card-img" width={'100%'} height={'100%'} />
                 </div>
                 <p className="card-title">{data.title}</p>
                 <div className="card-body">
-                    <p>{data.subBody}</p>
+                    <p style={{height: 50, overflowY: 'scroll'}}>{data.subBody}</p>
                     <Link to={`/berita/${data.slug}`} style={{marginLeft: 10, fontWeight: "bold"}}>... Detail</Link>
                 </div>
             </div>

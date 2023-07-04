@@ -13,6 +13,7 @@ function Main(){
     useEffect(() => {
         dis(getAllNews({page: 1}));
     }, [dis]);
+    console.log(data)
     return(
         <Fragment>
             <Spin spinning={isLoading}>

@@ -27,6 +27,7 @@ const UserSlice = createSlice({
         fName: null,
         lName: null,
         email: null,
+        phone: null,
         role: null,
     },
     extraReducers: {
@@ -36,6 +37,7 @@ const UserSlice = createSlice({
             state.lName = action.payload.last_name;
             state.email = action.payload.m_credential.email;
             state.role = action.payload.m_credential.m_role.role;
+            state.phone = action.payload.phone;
         },
         [removeUser.fulfilled]: (state) => {
             state.userId = null;
@@ -43,6 +45,7 @@ const UserSlice = createSlice({
             state.lName = null;
             state.email = null;
             state.role = null;
+            state.phone = null;
         }
     }
 });
