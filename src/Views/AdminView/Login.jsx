@@ -15,7 +15,7 @@ function Login(){
 
     const handleFinish = async (e) => {
         setLoading(true);
-        if(e.email === null || e.password === null || !e.email.includes('@gmail')){
+        if(!e.email || !e.password || !e.email.includes('@gmail')){
             setFeed('wrong email or password!');
             setLoading(false);
             return;
@@ -32,12 +32,14 @@ function Login(){
             setLoading(false);
         }
     };
+
     useEffect(() => {
         const user = Cookies.get('token');
         if(user){
             nav('/admin/dashboard');
         }
     }, [nav]);
+    
     return(
         <Fragment>
             <section title="Daftar" className="auth-wrapper">
