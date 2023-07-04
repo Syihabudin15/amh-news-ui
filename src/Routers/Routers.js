@@ -48,9 +48,9 @@ function Routers(){
                 {label: 'Semua', key: '/daftar-berita'},
                 {label: 'Kategori', key: '#',
                     children: [
-                        {label: 'Game', key: '/kategori/64a24ff14d5f8de07252d76c'},
-                        {label: 'Viral', key: '/kategori/64a250604d5f8de07252d77e'},
-                        {label: 'Animasi', key: '/kategori/64a24f9a4d5f8de07252d766'},
+                        {label: 'Game', key: '/kategori/64a4718aa00a5ceeed458927'},
+                        {label: 'Viral', key: '/kategori/64a471b4a00a5ceeed458929'},
+                        {label: 'Animasi', key: '/kategori/64a47028555131ea3ebb6089'},
                         {label: 'Daftar Kategori', key: '/daftar-kategori'}
                     ]
                 }

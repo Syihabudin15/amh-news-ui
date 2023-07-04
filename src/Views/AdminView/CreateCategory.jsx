@@ -35,7 +35,6 @@ function CreateCategory(){
             setOpen(false);
         }catch(err){
             setFeed(err.response.data.message || 'server error');
-            console.log(err);
         }finally{
             setLoading(false);
         }

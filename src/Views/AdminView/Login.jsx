@@ -27,7 +27,6 @@ function Login(){
             notification.success({message: 'Berhasil masuk'});
             nav('/admin/dashboard');
         }catch(err){
-            console.log(err);
             setFeed(err.response.data.message || 'server error');
             setLoading(false);
         }

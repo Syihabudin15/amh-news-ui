@@ -15,7 +15,6 @@ function AllNews(){
     useEffect(() => {
         dis(getAllNews(page));
     }, [dis, page]);
-    console.log(dataSearch);
 
     return(
         <Fragment>

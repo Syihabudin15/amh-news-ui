@@ -25,7 +25,6 @@ function Dashboard(){
     useEffect(() => {
         dis(getAllUser());
     }, [dis]);
-    console.log(all);
     return(
         <Fragment>
             <h3 style={{textAlign: 'center'}}>My Dashboard</h3>
