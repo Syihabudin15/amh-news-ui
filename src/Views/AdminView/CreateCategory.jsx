@@ -34,6 +34,7 @@ function CreateCategory(){
             notification.success({message: 'Berhasil!'});
             setOpen(false);
         }catch(err){
+            console.log(err);
             setFeed(err.response.data.message || 'server error');
         }finally{
             setLoading(false);
