@@ -74,7 +74,7 @@ function CreateNews(){
             const reader = new FileReader();
             const file = input.files[0];
             reader.readAsDataURL(file);
-            reader.onload(() => {
+            reader.onloadend = () => {
                 axios.request({
                     method: 'POST',
                     url: `${base}/api/v1/news/save-image`,
@@ -91,7 +91,7 @@ function CreateNews(){
                 .catch(err => {
                     notification.error({message: err.response.data.message || 'server error'});
                 });
-            });
+            };
         };
     };
 
