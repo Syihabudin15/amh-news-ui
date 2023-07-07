@@ -26,7 +26,6 @@ function CreateCategory(){
                 method: 'POST',
                 url: `${base}/api/v1/category`,
                 headers: {
-                    'Content-Type': 'multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbTL',
                     'token': Cookies.get('token')
                 },
                 data: {
