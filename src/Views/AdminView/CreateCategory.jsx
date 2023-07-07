@@ -9,19 +9,18 @@ function CreateCategory(){
     const [loading, setLoading] = useState(false);
     const [img, setImg] = useState();
     const [title, setTitle] = useState();
+    const [imgBase, setImgBase] = useState();
     const [feed, setFeed] = useState();
     
-    const change = (e) => {
-        setImg(e.target.files[0]);
-        setFeed(null);
-    };
 
     const handleOk = async () => {
         if(!title || !img) return setFeed('Title and Image is required');
         setLoading(true);
-        const data = new FormData();
-        data.append('title', title);
-        data.append('image', img);
+        const reader = new FileReader();
+        reader.readAsDataURL(img);
+        reader.onload(() => {
+            setImgBase(reader.result);
+        });
         try{
             await axios.request({
                 method: 'POST',
@@ -30,7 +29,10 @@ function CreateCategory(){
                     'Content-Type': 'multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbTL',
                     'token': Cookies.get('token')
                 },
-                data: data
+                data: {
+                    title: title,
+                    image: imgBase
+                }
             });
             notification.success({message: 'Berhasil!'});
             setOpen(false);
@@ -59,7 +61,10 @@ function CreateCategory(){
                 <Row style={{marginTop: 10}}>
                     <Col span={5}>Image</Col> <Col span={3}>:</Col>
                     <Col>
-                        <input type="file" onChange={change} />
+                        <input type="file" onChange={(e) => {
+                            setImg(e.target.files[0]);
+                            setFeed(null);
+                        }} />
                     </Col>
                 </Row>
                 <Row>

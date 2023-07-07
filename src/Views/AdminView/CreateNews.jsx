@@ -16,6 +16,7 @@ function CreateNews(){
     const [feed, setFeed] = useState();
     const [title, setTitle] = useState();
     const [image, setImage] = useState();
+    const [imgBase, setImgBase] = useState();
     let quil = useRef(null);
     const dis = useDispatch();
     const nav = useNavigate();
@@ -36,26 +37,29 @@ function CreateNews(){
             setFeed('Judul, Image, Sub Bodi, Bodi, Kategori tidak boleh kosong');
             return;
         }
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('image', image);
-        formData.append('subBody', e.subBody);
-        formData.append('categories', e.categories);
-        formData.append('body', editHtml);
-
-        axios.request({
-            method: 'POST',
-            url: `${base}/api/v1/news`,
-            headers: {
-                'token': Cookies.get('token')
-            },
-            data: formData
-        }).then(res => {
-            notification.success({message: 'Berita berhasil dibuat'});
-            nav('/admin/dashboard');
-        }).catch(err => {
-            setFeed(err.response.data.message || 'server error');
-        })
+        const reader = new FileReader();
+        reader.readAsDataURL(image);
+        reader.onload(() => {
+            axios.request({
+                method: 'POST',
+                url: `${base}/api/v1/news`,
+                headers: {
+                    'token': Cookies.get('token')
+                },
+                data: {
+                    title: title,
+                    image: reader.result,
+                    subBody: e.subBody,
+                    categories: e.categories,
+                    body: editHtml
+                }
+            }).then(res => {
+                notification.success({message: 'Berita berhasil dibuat'});
+                nav('/admin/dashboard');
+            }).catch(err => {
+                setFeed(err.response.data.message || 'server error');
+            });
+        });
     };
 
     const handleImage = () => {
@@ -67,26 +71,28 @@ function CreateNews(){
         input.click();
 
         input.onchange = () => {
-            const formData = new FormData();
+            const reader = new FileReader();
             const file = input.files[0];
-            formData.append('image', file);
-
-            axios.request({
-                method: 'POST',
-                url: `${base}/api/v1/news/save-image`,
-                headers: {
-                    'token': Cookies.get('token')
-                },
-                data: formData
-            })
-            .then(res => {
-                editor.insertEmbed(editor.getSelection(), 'image', `${base}/img/${res.data.data.url}`);
-            })
-            .catch(err => {
-                notification.error({message: err.response.data.message || 'server error'});
+            reader.readAsDataURL(file);
+            reader.onload(() => {
+                axios.request({
+                    method: 'POST',
+                    url: `${base}/api/v1/news/save-image`,
+                    headers: {
+                        'token': Cookies.get('token')
+                    },
+                    data: {
+                        image: reader.result
+                    }
+                })
+                .then(res => {
+                    editor.insertEmbed(editor.getSelection(), 'image', `${base}/img/${res.data.data.url}`);
+                })
+                .catch(err => {
+                    notification.error({message: err.response.data.message || 'server error'});
+                });
             });
         };
-        
     };
 
     const module = useMemo(() => ({
