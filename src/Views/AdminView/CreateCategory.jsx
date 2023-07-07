@@ -18,9 +18,9 @@ function CreateCategory(){
         setLoading(true);
         const reader = new FileReader();
         reader.readAsDataURL(img);
-        reader.onload(() => {
+        reader.onloadend = () => {
             setImgBase(reader.result);
-        });
+        };
         try{
             await axios.request({
                 method: 'POST',

@@ -39,7 +39,7 @@ function CreateNews(){
         }
         const reader = new FileReader();
         reader.readAsDataURL(image);
-        reader.onload(() => {
+        reader.onloadend = () => {
             axios.request({
                 method: 'POST',
                 url: `${base}/api/v1/news`,
@@ -59,7 +59,7 @@ function CreateNews(){
             }).catch(err => {
                 setFeed(err.response.data.message || 'server error');
             });
-        });
+        };
     };
 
     const handleImage = () => {
