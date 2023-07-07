@@ -16,7 +16,6 @@ function CreateNews(){
     const [feed, setFeed] = useState();
     const [title, setTitle] = useState();
     const [image, setImage] = useState();
-    const [imgBase, setImgBase] = useState();
     let quil = useRef(null);
     const dis = useDispatch();
     const nav = useNavigate();
@@ -32,7 +31,6 @@ function CreateNews(){
 
     const handleFinish = (e) => {
         setFeed(null);
-        console.log(e);
         if(!e.image || !e.title || !e.subBody || !e.categories || !editHtml){
             setFeed('Judul, Image, Sub Bodi, Bodi, Kategori tidak boleh kosong');
             return;
@@ -86,7 +84,7 @@ function CreateNews(){
                     }
                 })
                 .then(res => {
-                    editor.insertEmbed(editor.getSelection(), 'image', `${base}/img/${res.data.data.url}`);
+                    editor.insertEmbed(editor.getSelection(), 'image', res.data.data.url);
                 })
                 .catch(err => {
                     notification.error({message: err.response.data.message || 'server error'});
