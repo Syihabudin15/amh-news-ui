@@ -85,6 +85,7 @@ function CreateNews(){
                 })
                 .then(res => {
                     editor.insertEmbed(editor.getSelection(), 'image', res.data.data.url);
+                    editor.insertEmbed(editor.getSelection(), 'br');
                 })
                 .catch(err => {
                     notification.error({message: err.response.data.message || 'server error'});
