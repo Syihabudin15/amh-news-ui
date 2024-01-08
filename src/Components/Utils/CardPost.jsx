@@ -17,6 +17,6 @@ function CardPost({data, key}){
             </div>
         </Fragment>
     )
-};
+}
 
-export default CardPost;
+export default CardPost; 

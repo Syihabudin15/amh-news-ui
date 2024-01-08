@@ -18,8 +18,6 @@ function News({slug, idSet, isPostSet}){
         }
         if(data.postedAt){
             isPostSet(true);
-        }else{
-            isPostSet(false);
         }
     }, [dis, params.slug, slug, data._id, idSet, data.postedAt, isPostSet]);
     return(
