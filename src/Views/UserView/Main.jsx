@@ -16,14 +16,14 @@ function Main(){
     return(
         <Fragment>
             <Spin spinning={isLoading}>
-                <section title="Berita Utama" style={{marginBottom: 100}}>
+                <section title="Berita Utama" style={{marginBottom: 100, padding: 50}}>
                     <div className="title-post">
                         <h2 >{data.length > 0 ? data[0].title : 'Judul Berita'}</h2>
                         <div style={{borderBottom: '1px solid #eee', textAlign: "right", color: '#aaa', fontSize: '.7em'}}>
                             <p>{data.length > 0 ? data[0].postedAt : 'Tanggal'}</p>
                         </div>
                     </div>
-                    <div className="body-post" dangerouslySetInnerHTML={{__html: data.length > 0 ? data[0].body : ''}}>
+                    <div className="body-post" style={{textAlign: 'justify', lineHeight: 2}} dangerouslySetInnerHTML={{__html: data.length > 0 ? data[0].body : ''}}>
                     </div>
                     <div className="category-post">
                         <Row>

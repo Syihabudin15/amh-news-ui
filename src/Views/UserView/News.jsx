@@ -26,13 +26,13 @@ function News({slug, idSet, isPostSet}){
                 <Link to={'/'}><p>Main</p></Link>
             </div>
             <Spin spinning={isLoading}>
-                <div style={{marginBottom: 100}}>
+                <div style={{marginBottom: 100, padding: 50}}>
                     {data ? <div className="title-post">
                                 <h2 >{data.title}</h2>
                                 <div style={{borderBottom: '1px solid #eee', textAlign: "right", color: '#aaa', fontSize: '.7em'}}>
                                     <p>{data.postedAt}</p>
                                 </div>
-                                <div className="body-post" dangerouslySetInnerHTML={{__html: data.body}}>
+                                <div className="body-post" style={{textAlign: "justify", lineHeight: 2}} dangerouslySetInnerHTML={{__html: data.body}}>
                                 </div>
                             </div> : <p style={{fontWeight: 'bold', opacity: .5, color: 'red'}}>Not Found</p>}
                 </div>
